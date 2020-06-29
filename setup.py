@@ -8,6 +8,7 @@ inst_reqs = [
     "pytest-benchmark",
     "pytest-asyncio",
     "rio-tiler-crs~=2.0.2",
+    "importlib_metadata",
 ]
 
 setup(
