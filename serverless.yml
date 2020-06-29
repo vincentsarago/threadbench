@@ -1,0 +1,32 @@
+service: threadbench
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: ${opt:stage, 'production'}
+  region: ${opt:region, 'us-east-1'}
+
+  # Add other buckets here if needed
+  iamRoleStatements:
+  -  Effect: "Allow"
+     Action:
+       - "s3:GetObject"
+       - "s3:HeadObject"
+     Resource:
+       - "arn:aws:s3:::*"
+
+package:
+  artifact: package.zip
+
+functions:
+  app:
+    handler: handler.handler
+    memorySize: 3008
+    timeout: 900
+    layers:
+      - arn:aws:lambda:${self:provider.region}:524387336408:layer:gdal24-py37-geolayer:1
+    environment:
+      GDAL_DATA: /opt/share/gdal
+      PROJ_LIB: /opt/share/proj
+
+

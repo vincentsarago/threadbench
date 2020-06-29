@@ -1,0 +1,28 @@
+version: 2
+common: &common
+  working_directory: ~/threadbench
+  steps:
+    - checkout
+    - run:
+        name: install dependencies
+        command: pip install tox codecov pre-commit --user
+    - run:
+        name: run tox
+        command: ~/.local/bin/tox
+    - run:
+        name: run pre-commit
+        command: ~/.local/bin/pre-commit run --all-files
+
+jobs:
+  "python-3.7":
+    <<: *common
+    docker:
+      - image: circleci/python:3.7.2
+        environment:
+          - TOXENV=py37
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - python-3.7
