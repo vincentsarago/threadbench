@@ -83,7 +83,6 @@ Threads | Min (s) | Max (s) | Mean (s) | Median (s)
 ------------------------------------------------------------------------------------------------------------
 
 ### Lambda - 1024Mo
-Name (time in s) Min Max Mean StdDev Median IQR Outliers OPS Rounds Iterations
 
 #### 1 image
 Threads | Min (ms) | Max (ms) | Mean (ms) | Median (ms)
