@@ -9,9 +9,6 @@ common: &common
     - run:
         name: run tox
         command: ~/.local/bin/tox
-    - run:
-        name: run pre-commit
-        command: ~/.local/bin/pre-commit run --all-files
 
 jobs:
   "python-3.7":
